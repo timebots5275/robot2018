@@ -1,20 +1,30 @@
 package org.usfirst.frc.team5275.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team5275.robot.RobotMap;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import com.ctre.phoenix.motorcontrol.can.*;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 /**
  *
  */
 public class DriveTrain extends Subsystem {
-	private static RobotMap robotMap = new RobotMap();
-	//defining our motors
-	public WPI_TalonSRX frontLeft = new WPI_TalonSRX(robotMap.frontLeftCAN);
-	public WPI_TalonSRX rearLeft = new WPI_TalonSRX(robotMap.rearLeftCAN);
-	public WPI_TalonSRX frontRight = new WPI_TalonSRX(robotMap.frontRightCAN);
-	public WPI_TalonSRX rearRight = new WPI_TalonSRX(robotMap.rearRightCAN);
+	
+	// defining our drive motors
+	public static WPI_TalonSRX frontLeft = new WPI_TalonSRX(RobotMap.frontLeftCAN);
+	public static WPI_TalonSRX rearLeft = new WPI_TalonSRX(RobotMap.rearLeftCAN);
+	public static WPI_TalonSRX frontRight = new WPI_TalonSRX(RobotMap.frontRightCAN);
+	public static WPI_TalonSRX rearRight = new WPI_TalonSRX(RobotMap.rearRightCAN);
+	// defining our DifferentialDrive object
+	public static DifferentialDrive drive = new DifferentialDrive(frontLeft, frontRight);
+	// method run at robot init
+	public static void initialize() {
+		// initialize all our stuff
+		rearLeft.follow(frontLeft);
+		rearRight.follow(rearRight);
+		System.out.println("Drive Train initialized");
+	}
 	
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.

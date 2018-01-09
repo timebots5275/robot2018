@@ -7,9 +7,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
+import org.usfirst.frc.team5275.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5275.robot.commands.ExampleCommand;
-import org.usfirst.frc.team5275.robot.subsystems.ExampleSubsystem;
 
 
 /**
@@ -35,7 +34,9 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		// set up our robot
 		oi = new OI();
+		DriveTrain.initialize();
 
 	}
 
