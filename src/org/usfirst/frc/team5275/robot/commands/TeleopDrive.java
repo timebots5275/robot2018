@@ -19,6 +19,8 @@ public class TeleopDrive extends Command {
 	protected void initialize() {
 	}
 
+	//Scheduler.getInstance().run();
+
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
