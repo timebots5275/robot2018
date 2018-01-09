@@ -18,7 +18,7 @@ public class DriveTrain extends Subsystem {
 	public static WPI_TalonSRX rearRight = new WPI_TalonSRX(RobotMap.rearRightCAN);
 	// defining our DifferentialDrive object
 	public static DifferentialDrive drive = new DifferentialDrive(frontLeft, frontRight);
-	// method run at robot init
+	// method runs at robot init
 	public static void initialize() {
 		// initialize all our stuff
 		rearLeft.follow(frontLeft);
