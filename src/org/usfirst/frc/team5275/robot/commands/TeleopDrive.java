@@ -22,7 +22,7 @@ public class TeleopDrive extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		//TODO: check these axes are correct
+		//TODO: check that these axes are correct
 		Robot.drivetrain.drive.arcadeDrive(Robot.oi.driveStick.getRawAxis(0), Robot.oi.driveStick.getRawAxis(2));
 	}
 
