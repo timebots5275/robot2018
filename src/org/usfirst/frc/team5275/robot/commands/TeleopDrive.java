@@ -17,6 +17,7 @@ public class TeleopDrive extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
+		
 	}
 
 	//Scheduler.getInstance().run();
