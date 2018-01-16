@@ -7,7 +7,6 @@ public class RobotMap {
 
 	
 	// these integers represent the IDs of the CAN controllers
-	//TODO: change these ports to be correct
 	public static int frontLeftCAN = 1;
 	public static int frontRightCAN = 2;
 	public static int rearLeftCAN = 3;
