@@ -7,10 +7,10 @@ public class RobotMap {
 
 	
 	// these integers represent the IDs of the CAN controllers
-	public static int frontLeftCAN = 1;
-	public static int frontRightCAN = 2;
-	public static int rearLeftCAN = 3;
-	public static int rearRightCAN = 4;
+	public static int frontLeftCAN = 0;
+	public static int frontRightCAN = 1;
+	public static int rearLeftCAN = 2;
+	public static int rearRightCAN = 3;
 	
 	
 }
