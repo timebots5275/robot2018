@@ -26,7 +26,7 @@ public class TeleopDrive extends Command {
 	@Override
 	protected void execute() {
 		//TODO: check that these axes are correct
-		Robot.drivetrain.drive.arcadeDrive(Robot.oi.driveStick.getRawAxis(1), Robot.oi.driveStick.getRawAxis(0));
+		Robot.drivetrain.drive.arcadeDrive((Robot.oi.driveStick.getRawAxis(1) * -1), Robot.oi.driveStick.getRawAxis(2));
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
