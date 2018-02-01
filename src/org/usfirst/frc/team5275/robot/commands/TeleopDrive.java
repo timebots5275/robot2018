@@ -8,10 +8,12 @@ import org.usfirst.frc.team5275.robot.Robot;
  *
  */
 public class TeleopDrive extends Command {
+	double val = 0.0;
 	public TeleopDrive() {
 		// Use requires() here to declare subsystem dependencies
 		//requires(Robot.ExampleSubsystem);
 		requires(Robot.drivetrain);
+		
 	}
 
 	// Called just before this Command runs the first time
@@ -26,7 +28,8 @@ public class TeleopDrive extends Command {
 	@Override
 	protected void execute() {
 		//TODO: check that these axes are correct
-		Robot.drivetrain.drive.arcadeDrive((Robot.oi.driveStick.getRawAxis(1) * -1), Robot.oi.driveStick.getRawAxis(2));
+		val = (Robot.oi.driveStick.getRawAxis(1) * -1) * ((Robot.oi.driveStick.getRawAxis(3) + 1)/ 2);
+		Robot.drivetrain.drive.arcadeDrive(val, Robot.oi.driveStick.getRawAxis(2));
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
