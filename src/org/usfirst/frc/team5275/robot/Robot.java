@@ -10,6 +10,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team5275.robot.subsystems.*;
 import org.usfirst.frc.team5275.robot.commands.*;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -26,6 +28,8 @@ public class Robot extends IterativeRobot {
 	SendableChooser<Command> chooser = new SendableChooser<>();
 	public static DriveTrain drivetrain = new DriveTrain();
 	Command driveCommand = new TeleopDrive();
+	UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+	
 	
 	
 
