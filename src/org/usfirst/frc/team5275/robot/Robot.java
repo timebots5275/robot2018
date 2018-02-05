@@ -27,6 +27,7 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 	public static DriveTrain drivetrain = new DriveTrain();
+	public static Arm armsystem = new Arm();
 	Command driveCommand = new TeleopDrive();
 	UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 	
@@ -39,6 +40,7 @@ public class Robot extends IterativeRobot {
 		// set up our robot
 		oi = new OI();
 		drivetrain.initialize();
+		armsystem.initialize();
 
 	}
 
