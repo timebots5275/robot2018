@@ -15,8 +15,7 @@ public class Arm extends Subsystem {
 	
 	// defining our drive motors
 	public static WPI_VictorSPX leadScrew = new WPI_VictorSPX(RobotMap.leadScrew);
-	public static WPI_VictorSPX armJoint = new WPI_VictorSPX(RobotMap.armJoint);
-	public static Solenoid clampPiston = new Solenoid(RobotMap.clampPiston);
+
 	
 	
 	public static void initialize() {
