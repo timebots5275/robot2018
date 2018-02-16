@@ -11,7 +11,6 @@ public class RobotMap {
 	public static int frontRightCAN = 1;
 	public static int rearLeftCAN = 2;
 	public static int rearRightCAN = 3;
-	public static int wristMotor = 0;
 	//Other Motor Controllers
 	public static int leadScrew = 0;
 	public static int wristMotor = 1;
