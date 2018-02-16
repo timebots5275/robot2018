@@ -10,7 +10,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team5275.robot.subsystems.*;
 import org.usfirst.frc.team5275.robot.commands.*;
 import org.usfirst.frc.team5275.robot.subsystems.SeatMotor;
-
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -27,8 +28,8 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain drivetrain = new DriveTrain();
 	Command driveCommand = new TeleopDrive();
 	public SeatMotor wristMotor = new SeatMotor();
-	
-
+	public static Arm armsystem = new Arm();
+	UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 
 	@Override
 	public void robotInit() {
