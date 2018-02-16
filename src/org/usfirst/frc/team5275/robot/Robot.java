@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team5275.robot.subsystems.*;
 import org.usfirst.frc.team5275.robot.commands.*;
-
+import org.usfirst.frc.team5275.robot.subsystems.SeatMotor;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -26,7 +26,7 @@ public class Robot extends IterativeRobot {
 	SendableChooser<Command> chooser = new SendableChooser<>();
 	public static DriveTrain drivetrain = new DriveTrain();
 	Command driveCommand = new TeleopDrive();
-	
+	public SeatMotor wristMotor = new SeatMotor();
 	
 
 
@@ -35,6 +35,7 @@ public class Robot extends IterativeRobot {
 		// set up our robot
 		oi = new OI();
 		drivetrain.initialize();
+		wristMotor.initialize(RobotMap.wristMotor);
 
 	}
 
