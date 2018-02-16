@@ -14,5 +14,5 @@ public class RobotMap {
 	public static int wristMotor = 0;
 	//Other Motor Controllers
 	public static int leadScrew = 0;
-	public static int armJoint = 1;
+	public static int wristMotor = 1;
 }
