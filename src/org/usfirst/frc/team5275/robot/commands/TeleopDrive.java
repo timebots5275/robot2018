@@ -29,7 +29,8 @@ public class TeleopDrive extends Command {
 	protected void execute() {
 		//TODO: check that these axes are correct
 		val = (Robot.oi.driveStick.getRawAxis(1) * -1) * ((Robot.oi.driveStick.getRawAxis(3) + 1)/ 2);
-		Robot.drivetrain.drive.arcadeDrive(val, Robot.oi.driveStick.getRawAxis(2));
+		
+		Robot.drivetrain.drive.arcadeDrive(val, (Robot.oi.driveStick.getRawAxis(2)) * ((Robot.oi.driveStick.getRawAxis(3) + 1)/ 2));
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
