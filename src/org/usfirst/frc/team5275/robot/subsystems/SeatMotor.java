@@ -59,6 +59,7 @@ public class SeatMotor extends Subsystem {
 		double locSpeed = speed;
 		if (rotations < 0) {
 			locSpeed = -speed;
+			rotations = rotations * -1;
 		}
 		while (count < rotations) {
 			count = counter.getDistance();
