@@ -99,6 +99,7 @@ public class SeatMotor extends Subsystem {
 	  }
 	  System.out.println("Difference: " + difference);
 	  System.out.println("CurrentSpeed: " + currentSpeed);
+	  System.out.println("Position: " + currentRotations);
 	  if (!((difference < 2.0) && (difference > -2.0))){
 	    motor.set(currentSpeed);
 	  }
