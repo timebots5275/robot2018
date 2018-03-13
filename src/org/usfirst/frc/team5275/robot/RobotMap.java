@@ -15,7 +15,10 @@ public class RobotMap {
 	// Other Motor Controllers
 	public static int leadScrew = 0;
 	public static int wristMotor = 1;
+	public static int[] intake = {2,3};
 	
 	// IO ports
-	public static int potentiometerPort = 1;
+	public static int potentiometerPort = 3; // Analog 1
+	public static int upSwitch = 2; // Digital 2
+	public static int downSwitch = 1; // Digital 1
 }

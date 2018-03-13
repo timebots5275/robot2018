@@ -27,7 +27,7 @@ public class Robot extends IterativeRobot {
 	SendableChooser<Command> chooser = new SendableChooser<>();
 	public static DriveTrain drivetrain = new DriveTrain();
 	Command driveCommand = new TeleopDrive();
-	public SeatMotor wristMotor = new SeatMotor();
+	public SeatMotor wrist = new SeatMotor();
 	public static Arm armsystem = new Arm();
 	UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 	public static NetworkTable nt;
@@ -37,7 +37,8 @@ public class Robot extends IterativeRobot {
 		// set up our robot
 		oi = new OI();
 		DriveTrain.initialize();
-		wristMotor.initialize(RobotMap.wristMotor);
+		wrist.initialize();
+		armsystem.initialize();
 
 	}
 
@@ -79,6 +80,38 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		driveCommand.start();
+		
+		// our intake
+        if (oi.driveStick.getRawButton(1))
+          armsystem.stop();
+        if (oi.driveStick.getRawButton(7))
+          armsystem.rotateTo(20.0);
+        if (oi.driveStick.getRawButton(9))
+          armsystem.rotateTo(0.0);
+        if (oi.driveStick.getRawButton(11))
+          armsystem.rotateTo(-20.0);
+        if (oi.driveStick.getRawButton(2))
+          armsystem.rotateTo(-45.0);
+        
+        if (oi.driveStick.getRawButton(5))
+          armsystem.intake.runFull();
+        if (oi.driveStick.getRawButton(6))
+          armsystem.intake.eject();
+        if (oi.driveStick.getRawButton(3))
+          armsystem.intake.hold();
+        if (oi.driveStick.getRawButton(4))
+          armsystem.intake.kill();
+
+        if(oi.driveStick.getRawButton(10))
+          wrist.rotateTo(0.0);
+        if(oi.driveStick.getRawButton(8))
+          wrist.rotateTo(-45.0);
+        if(oi.driveStick.getRawButton(12))
+          wrist.rotateTo(45.0);
+		
+        armsystem.tick();
+        wrist.tick();
+        
 	}
 
 	@Override
