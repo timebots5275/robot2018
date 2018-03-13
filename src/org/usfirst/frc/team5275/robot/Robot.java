@@ -103,11 +103,11 @@ public class Robot extends IterativeRobot {
           armsystem.intake.kill();
 
         if(oi.driveStick.getRawButton(10))
-          wrist.rotateTo(0.0);
+          wrist.motor.set(0);
         if(oi.driveStick.getRawButton(8))
-          wrist.rotateTo(-45.0);
+          wrist.motor.set(wrist.speed);
         if(oi.driveStick.getRawButton(12))
-          wrist.rotateTo(45.0);
+          wrist.motor.set(-wrist.speed);
 		
         armsystem.tick();
         wrist.tick();
