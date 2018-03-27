@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class SeatMotor extends Subsystem {
 	public Counter counter = new Counter();
 	public WPI_VictorSPX motor = new WPI_VictorSPX(RobotMap.wristMotor);
-	public double speed = 0.45;
+	public double speed = 1.0;
 	public double count = 0;
 	private double desiredRotations = 0.0;
 	private double currentSpeed = 0.0;

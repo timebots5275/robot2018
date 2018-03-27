@@ -39,4 +39,5 @@ public class OI {
 	// button.whenReleased(new ExampleCommand());
 	
 	public Joystick driveStick = new Joystick(0);
+	public Joystick armStick = new Joystick(1);
 }

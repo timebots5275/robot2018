@@ -48,7 +48,7 @@ public class Arm extends Subsystem {
          speed = 0;
        }
        leadScrew.set(speed);
-//       System.out.println("Motor moving: " + isMoving + "  " + speed);
+       System.out.println("Motor moving: " + isMoving + "  " + speed);
     }
     
     public void stop() {
@@ -87,6 +87,7 @@ public class Arm extends Subsystem {
         setMotor(currentSpeed);
       else
         setMotor(0);
+      System.out.println("pot position" + position);
     }
     
     
