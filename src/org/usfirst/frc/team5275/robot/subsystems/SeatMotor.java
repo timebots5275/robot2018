@@ -7,15 +7,19 @@
 
 package org.usfirst.frc.team5275.robot.subsystems;
 
+import org.usfirst.frc.team5275.robot.RobotMap;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class SeatMotor extends Subsystem {
 	public Counter counter = new Counter();
-	public WPI_VictorSPX motor = new WPI_VictorSPX(0);
-	public double speed = 0.5;
+	public WPI_VictorSPX motor = new WPI_VictorSPX(RobotMap.wristMotor);
+	public double speed = 1.0;
 	public double count = 0;
+	private double desiredRotations = 0.0;
+	private double currentSpeed = 0.0;
+	private double currentRotations;
 	// rotations per degree
 	public double ratio = (174.9 / 360);
 	
@@ -55,26 +59,55 @@ public class SeatMotor extends Subsystem {
 	
 	
 	public void rotateBy(int rotations) {
-		count = 0;
-		double locSpeed = speed;
-		if (rotations < 0) {
-			locSpeed = -speed;
-		}
-		while (count < rotations) {
-			count = counter.getDistance();
-			motor.set(locSpeed);
-			System.out.println(count);
-		}
-		motor.set(0);
-		count = 0;
+	    desiredRotations = rotations;
+  		count = 0;
+  		double locSpeed = speed;
+  		currentSpeed = speed;
+  		if (rotations < 0) {
+  			locSpeed = -speed;
+  			rotations = rotations * -1;
+  		}
+  		while (count < rotations) {
+  			count = counter.getDistance();
+  			motor.set(locSpeed);
+  			System.out.println(count);
+  		}
+  		motor.set(0);
+  		count = 0;
 	}
 	
-	public void rotateBy(double degrees) {
+	public void rotateTo(double degrees) {
 		int rotations;
 		rotations = (int) Math.round(degrees * ratio);
-		rotateBy(rotations);
+		desiredRotations = rotations;
 	}
 	
-	// heck your subsystem beauty standards
+	public void tick() {
+	  double currentDistance = counter.getDistance();
+	  double delta = count - currentDistance;
+	  System.out.println(delta + " " + currentDistance + " " + count);
+	  if (currentSpeed < 0) 
+	    currentRotations -= delta;
+	  else if (currentSpeed > 0)
+	    currentRotations += delta;
+	  double difference = desiredRotations - currentRotations;
+	  if (difference < 0) {
+	    currentSpeed = -speed;
+	  }
+	  else {
+	    currentSpeed = speed;
+	  }
+	  System.out.println("Difference: " + difference);
+	  System.out.println("CurrentSpeed: " + currentSpeed);
+	  System.out.println("Position: " + currentRotations);
+	  if (!((difference < 2.0) && (difference > -2.0))){
+	    motor.set(currentSpeed);
+	  }
+	  else {
+	    motor.set(0.0);
+	  }
+	  count = currentDistance;
+	}
+	
 	public void initDefaultCommand() {}
 }
